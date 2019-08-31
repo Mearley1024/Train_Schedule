@@ -36,15 +36,9 @@
     <div class="jumbotron" style="background-color: black; color: green">
       <div class="container">      
         
-          <div class="container">
-              <h2>Centered Image</h2>
-              <p>Center an image by adding the utility classes .mx-auto (margin:auto) and .d-block (display:block) to the image:</p> 
-              <img src="michigan-railroad.jpeg" class="mx-auto d-block" style="width:50%"> 
-            </div>
-
-      <div class="header-component__image" style="background-image: img src= images/michigan-railroad.jpeg alt="Train-tracks">
+         <div class="header-component__image" style="background-image: img src=image/michigan-railroad.jpg alt="michigan railroad">
       </div>
-
+        
       
       <h1 class="text-center">Train Schedules</h1>
       <h3 class="text-center"> All Aboard!</h3>
@@ -64,7 +58,7 @@
                   <th scope="col">Train Name</th>
                   <th scope="col">Destination</th>
                   <th scope="col">Frequency</th>
-                  <th scope="col">Next Arrival</th>
+                  <th scope="col">Arrival</th>
                   <th scope="col">Minutes Away</th>   
                   <th scope="col">Train Number</th>   
                 </tr>
@@ -86,32 +80,32 @@
 
             <!-- Entry Form -->
             <form>
-              <div class="form-group">
+              <div class="form-group row">
                 <label for="Train-name-input">Train Name</label>
-                <input class="form-control" id="Train-name-input" placeholder="San Diego" type="text">
+                <input class="form-control" id="Train-name-input" type="text">
               </div>
-              <div class="form-group">
+              <div class="form-group row">
                 <label for="Destination-input">Destination</label>
                 <input class="form-control" id="Destination-input" placeholder="San Francisco" type="text">
               </div>
-              <div class="form-group">
-                <label for="Date-input">Date (MM/DD/YYYY)</label>
+              <div class="form-group row">
+                <label for="Frequency-input">Frequency</label>
                 <input class="form-control" id="Date-input" placeholder="08/08/2019" type="text">
               </div>
-              <div class="form-group">
-                <label for="rate-input">Departure Time</label>
-                <input class="form-control" id="Departure-input" placeholder="08:00" type="text">
+              <div class="form-group row">
+                <label for="Arrival-input">Arrival Time</label>
+                <input class="form-control" id="Arrival-input" placeholder="08:00" type="text">
               </div>
-              <div class="form-group">
-                <label for="rate-input">Arrival Time</label>
-                <input class="form-control" id="Departure-input" placeholder="20:00" type="text">
+              <div class="form-group row">
+                <label for="minutes-away-input">Minutes Away</label>
+                <input class="form-control" id="Minutes-away-input" placeholder="1:00" type="text">
               </div>
-              <div class="form-group">
-                <label for="rate-input">Train Number</label>
-                <input class="form-control" id="Arrival-input" placeholder="397" type="text">
+              <div class="form-group row">
+                <label for="train-number-input">Train Number</label>
+                <input class="form-control" id="Train-number-input" placeholder="397" type="text">
               </div>
                       
-              <button class="btn btn-primary float-right" id="add-train-btn">Submit</button>
+              <button class="btn btn-success float-right" id="add-train">Submit</button>
             </form>
 
           </div>
@@ -122,7 +116,46 @@
   </div>
 
   <!-- JavaScript -->
-  <script src="timesheetLogic.js"></script>
+  <script src="https://code.jquery.com/jquery.js"></script>
+
+  <script> 
+    
+    $("#add-train").on("click", function(event) {
+      // prevent form from trying to submit/refresh the page
+      event.preventDefault();
+
+      // Capture User Inputs and store them into variables
+      var train = $("#train-input").val().trim();
+      var destination = $("#destination-input").val().trim();
+      var Frequency = $("#frequency-input").val().trim();
+      var arrival = $("#arrival-input").val().trim();
+      var minutes = $("#minutes-input").val().trim();
+      var number = $("#number-input").val().trim();
+
+
+      // Console log each of the user inputs to confirm we are receiving them
+      console.log(train);
+      console.log(destination);
+      console.log(Frequency);
+      console.log(arrival);
+      console.log(minutes);
+      console.log(number);
+
+
+      // Output all of the new information into the relevant HTML sections
+      $("#train-name-display").text(train);
+      $("#destination-display").text(destination); 
+      $("#departure-display").text(Frequency);
+      $("#arrival-display").text(arrival);
+      $("#minutes-display").text(minutes);
+      $("#number-display").text(number);
+
+
+    });
+
+  
+  </script>
+
 
 </body>
 
